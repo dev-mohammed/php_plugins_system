@@ -21,7 +21,9 @@ function do_action($hook)
     global $actions;
     if(isset($actions[$hook])){
         foreach($actions[$hook] as $funcName){
-            call_user_func($funcName);
+            if(function_exists($funcName)){
+                call_user_func($funcName);
+            }
         }
     }
 }
@@ -49,7 +51,10 @@ function do_filter($hook , $content)
     global $filters;
     if(isset($filters[$hook])){
         foreach($filters[$hook] as $funcName){
-            $content = call_user_func($funcName , $content);
+            if(function_exists($funcName))
+            {
+                $content = call_user_func($funcName , $content);
+            }
         }
     }
     return $content;
