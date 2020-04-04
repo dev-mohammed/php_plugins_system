@@ -26,3 +26,31 @@ function do_action($hook)
     }
 }
 
+
+
+// filters
+
+$filters = array();
+
+/**
+ * add new filter to array
+ */
+function add_filter($hook , $functionName)
+{
+    global $filters;
+    $filters[$hook][] = $functionName;
+}
+
+/**
+ * Exceute Filter
+ */
+function do_filter($hook , $content)
+{
+    global $filters;
+    if(isset($filters[$hook])){
+        foreach($filters[$hook] as $funcName){
+            $content = call_user_func($funcName , $content);
+        }
+    }
+    return $content;
+}
