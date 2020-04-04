@@ -1,8 +1,7 @@
 <?php
 
 include('includes/plugins.php');
-include('plugins/testActionsPlugin.php');
-include('plugins/testFiltersPlugin.php');
+
 
 function printNumbers($number)
 {
@@ -14,7 +13,9 @@ function printNumbers($number)
     do_action('after_printing_numbers');
 }
 
-//printNumbers(10);
+echo '<h3> Actions </h3>';
+printNumbers(10);
+
 
 
 function printData()
@@ -37,4 +38,6 @@ function printData()
     do_action('after_display_data');
 }
 
+echo '<hr>';
+echo '<h3> Filters </h3>';
 printData();

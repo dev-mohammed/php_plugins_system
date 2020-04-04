@@ -59,3 +59,9 @@ function do_filter($hook , $content)
     }
     return $content;
 }
+
+
+foreach(glob('plugins/*.php') as $file)
+{
+    include($file);
+}
